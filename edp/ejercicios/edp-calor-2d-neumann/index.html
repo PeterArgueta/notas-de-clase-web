@@ -1,0 +1,81 @@
+<!DOCTYPE html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="stylesheet" href="/recursos_academicos/_astro/Base.C5RtAhwU.css"><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre']}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script><title>Ecuación de calor bidimensional: fronteras aisladas de Neumann · Notas de clase</title></head><body><header class="topbar"><a class="brand" href="/recursos_academicos/">⌂ Notas de clase</a><nav><a href="/recursos_academicos/edp/">EDP</a> · <a href="/recursos_academicos/edp/temas/ecuacion-de-calor/ejercicios/">Ecuación de calor</a></nav></header><main class="page"><p><a href="/recursos_academicos/edp/temas/ecuacion-de-calor/ejercicios/">« Volver a ejercicios</a></p><h1 class="topic-title">Ecuación de calor bidimensional: fronteras aisladas de Neumann</h1><article class="problem"><div class="problem-meta"><span>EDP-CALOR-2D-NEUMANN</span><span>Intermedia</span></div><h2>Enunciado</h2><div class="statement"><p>Resuelva la ecuación de calor en \(0&lt;x&lt;1\), \(0&lt;y&lt;1\), \(t&gt;0\):</p>
+<div class="math-scroll">\[\frac{\partial u}{\partial t}=k\left(\frac{\partial^2u}{\partial x^2}+\frac{\partial^2u}{\partial y^2}\right),\qquad k&gt;0,\]</div>
+<p>sujeta a las condiciones de frontera</p>
+<div class="math-scroll">\[u_x(0,y,t)=u_x(1,y,t)=0,\qquad
+u_y(x,0,t)=u_y(x,1,t)=0,\]</div>
+<p>y a la condición inicial</p>
+<div class="math-scroll">\[u(x,y,0)=xy.\]</div></div><details data-solution><summary>Ver solución</summary><div class="solution"><h4>1. Separación de variables</h4>
+<p>Suponiendo \(u(x,y,t)=X(x)Y(y)T(t)\):</p>
+<div class="math-scroll">\[\frac{T'}{kT}=\frac{X''}{X}+\frac{Y''}{Y}=-(\lambda+\mu).\]</div>
+<p>En consecuencia:</p>
+<div class="math-scroll">\[X''+\lambda X=0,\quad Y''+\mu Y=0,\quad
+T'+k(\lambda+\mu)T=0.\]</div>
+<h4>2. Valores propios espaciales</h4>
+<p>Para \(X'(0)=X'(1)=0\), si \(\lambda=\alpha^2&gt;0\), la solución</p>
+<p>\(X=C_1\cos(\alpha x)+C_2\sin(\alpha x)\) conduce a \(C_2=0\) y</p>
+<p>\(\sin(\alpha)=0\). Por tanto, \(\alpha=m\pi\).</p>
+<p>Además, \(\lambda=0\) admite la solución constante \(X_0=1\).</p>
+<p>Así:</p>
+<div class="math-scroll">\[\boxed{\lambda_m=m^2\pi^2,\qquad X_m(x)=\cos(m\pi x),\quad m=0,1,2,\ldots}\]</div>
+<p>Análogamente, para \(Y'(0)=Y'(1)=0\):</p>
+<div class="math-scroll">\[\boxed{\mu_n=n^2\pi^2,\qquad Y_n(y)=\cos(n\pi y),\quad n=0,1,2,\ldots}\]</div>
+<p>No hay valores propios negativos no triviales: al integrar por partes,</p>
+<p>\(\lambda\int_0^1 X^2\,dx=\int_0^1(X')^2\,dx\geq0\).</p>
+<h4>3. Solución temporal y doble suma</h4>
+<p>La ecuación temporal da:</p>
+<div class="math-scroll">\[T_{mn}(t)=e^{-k\pi^2(m^2+n^2)t}.\]</div>
+<p>El principio de superposición produce la doble serie de cosenos:</p>
+<div class="math-scroll">\[\boxed{
+u(x,y,t)=\sum_{m=0}^{\infty}\sum_{n=0}^{\infty}
+A_{mn}e^{-k\pi^2(m^2+n^2)t}
+\cos(m\pi x)\cos(n\pi y).
+}\]</div>
+<p>El modo \(m=n=0\) es constante y <strong>no debe omitirse</strong>.</p>
+<h4>4. Coeficientes de Fourier para $f(x,y)=xy$</h4>
+<p>En \(t=0\):</p>
+<div class="math-scroll">\[xy=\sum_{m=0}^{\infty}\sum_{n=0}^{\infty}
+A_{mn}\cos(m\pi x)\cos(n\pi y).\]</div>
+<p>El coeficiente constante es:</p>
+<div class="math-scroll">\[\boxed{A_{00}=\int_0^1\int_0^1 xy\,dx\,dy=\frac14.}\]</div>
+<p>Para \(m\geq1\) y \(n=0\):</p>
+<div class="math-scroll">\[A_{m0}=2\int_0^1\int_0^1xy\cos(m\pi x)\,dx\,dy
+=\int_0^1x\cos(m\pi x)\,dx.\]</div>
+<p>Por integración por partes:</p>
+<div class="math-scroll">\[\int_0^1x\cos(m\pi x)\,dx
+=\left[\frac{x\sin(m\pi x)}{m\pi}+
+\frac{\cos(m\pi x)}{m^2\pi^2}\right]_0^1
+=\frac{(-1)^m-1}{m^2\pi^2}.\]</div>
+<p>En consecuencia:</p>
+<div class="math-scroll">\[\boxed{A_{m0}=\frac{(-1)^m-1}{m^2\pi^2}},
+\qquad
+\boxed{A_{0n}=\frac{(-1)^n-1}{n^2\pi^2}}.\]</div>
+<p>Para \(m,n\geq1\):</p>
+<div class="math-scroll">\[A_{mn}=4\int_0^1\int_0^1xy\cos(m\pi x)\cos(n\pi y)\,dx\,dy\]</div>
+<div class="math-scroll">\[\boxed{A_{mn}=
+\frac{4[(-1)^m-1][(-1)^n-1]}{m^2n^2\pi^4}.}\]</div>
+<p>Los coeficientes con índices positivos son cero si alguno de ellos es par; cuando ambos son impares, \(A_{mn}=16/(m^2n^2\pi^4)\).</p>
+<h4>5. Solución final</h4>
+<div class="math-scroll">\[\boxed{
+\begin{aligned}
+u(x,y,t)={}&amp;\frac14
+-\frac{2}{\pi^2}
+\sum_{\substack{m=1\\m\ \mathrm{impar}}}^{\infty}
+\frac{e^{-km^2\pi^2t}}{m^2}\cos(m\pi x)\\
+&amp;-\frac{2}{\pi^2}
+\sum_{\substack{n=1\\n\ \mathrm{impar}}}^{\infty}
+\frac{e^{-kn^2\pi^2t}}{n^2}\cos(n\pi y)\\
+&amp;+\frac{16}{\pi^4}
+\sum_{\substack{m=1\\m\ \mathrm{impar}}}^{\infty}
+\sum_{\substack{n=1\\n\ \mathrm{impar}}}^{\infty}
+\frac{e^{-k\pi^2(m^2+n^2)t}}{m^2n^2}
+\cos(m\pi x)\cos(n\pi y).
+\end{aligned}
+}\]</div><h3>Comprobación</h3><p>Cada modo satisface \(u_t=k(u_{xx}+u_{yy})\). Las derivadas normales son cero porque</p>
+<p>\(\sin(0)=\sin(m\pi)=0\), y análogamente en \(y\).</p>
+<p>La serie doble reproduce \(xy\) en \(t=0\).</p>
+<p>Como \(m=n=0\) es el único modo que no decae:</p>
+<div class="math-scroll">\[\boxed{\lim_{t\to\infty}u(x,y,t)=\frac14,}\]</div>
+<p>el promedio térmico inicial conservado por las fronteras aisladas.</p>
+<p>El dato \(xy\) no satisface todas las condiciones de Neumann en \(t=0\),</p>
+<p>por lo que la compatibilidad clásica en la esquina temporal requiere cautela,</p>
+<p>pero la solución por Fourier es válida para \(t&gt;0\).</p></div></details></article></main><footer class="footer">© 2026 Peter Argueta · Notas de clase</footer><style>.math-scroll{overflow-x:auto;max-width:100%;padding:.35rem 0}details[data-solution]{margin-top:1.5rem;padding:1rem;border:1px solid #d7dde4;border-radius:.4rem}summary{cursor:pointer;font-weight:600}.solution{padding-top:1rem}.solution p{overflow-wrap:anywhere}</style><script>document.querySelector('[data-solution]')?.addEventListener('toggle',e=>e.target.querySelector('summary').textContent=e.target.open?'Ocultar solución':'Ver solución')</script></body></html>
