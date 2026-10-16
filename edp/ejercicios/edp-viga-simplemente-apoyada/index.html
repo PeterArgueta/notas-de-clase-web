@@ -5,17 +5,17 @@
 u_{xx}(0,t)=u_{xx}(L,t)=0.\]</div>
 <p>Las condiciones iniciales son</p>
 <div class="math-scroll">\[u(x,0)=f(x),\qquad u_t(x,0)=g(x),\quad 0&lt;x&lt;L.\]</div>
-<p>Determine \(u(x,t)\) mediante separación de variables, utilizando \(\lambda=\alpha^4\).</p></div><details><summary>Ver solución</summary><section class="solution"><h3>1. Separación de variables</h3>
+<p>Determine \(u(x,t)\) mediante separación de variables, empleando la convención \(-\lambda\) de clase (el libro sugiere \(\lambda=\alpha^4\) con signo opuesto en la separación).</p></div><details><summary>Ver solución</summary><section class="solution"><h3>1. Separación de variables</h3>
 <p>Proponemos \(u(x,t)=X(x)T(t)\). Sustituyendo:</p>
 <div class="math-scroll">\[a^2X^{(4)}(x)T(t)+X(x)T''(t)=0.\]</div>
 <p>Dividimos entre \(a^2XT\):</p>
-<div class="math-scroll">\[\frac{X^{(4)}}{X}=-\frac{T''}{a^2T}=\lambda.\]</div>
+<div class="math-scroll">\[\frac{X^{(4)}}{X}=-\frac{T''}{a^2T}=-\lambda.\]</div>
 <p>Obtenemos dos ecuaciones diferenciales ordinarias:</p>
-<div class="math-scroll">\[X^{(4)}-\lambda X=0,\qquad T''+a^2\lambda T=0.\]</div>
+<div class="math-scroll">\[X^{(4)}+\lambda X=0,\qquad T''-a^2\lambda T=0.\]</div>
 <p>Las condiciones de frontera se transforman en</p>
 <div class="math-scroll">\[X(0)=X(L)=0,\qquad X''(0)=X''(L)=0.\]</div>
 <h3>2. Valores y funciones propias</h3>
-<p>Usando la sugerencia \(\lambda=\alpha^4\) con \(\alpha&gt;0\), la ecuación espacial es</p>
+<p>Con la convención de separación \(-\lambda\), los valores propios de \(\lambda\) son negativos. Escribimos \(\lambda=-\alpha^4\), con \(\alpha&gt;0\). La ecuación espacial es</p>
 <div class="math-scroll">\[X^{(4)}-\alpha^4X=0.\]</div>
 <p>Su ecuación característica se factoriza como</p>
 <div class="math-scroll">\[(r^2-\alpha^2)(r^2+\alpha^2)=0,\]</div>
@@ -36,13 +36,13 @@ u_{xx}(0,t)=u_{xx}(L,t)=0.\]</div>
 <div class="math-scroll">\[\sin(\alpha L)=0\quad\Longrightarrow\quad
 \alpha_n=\frac{n\pi}{L},\qquad n=1,2,\ldots\]</div>
 <p>Los valores y funciones propias son</p>
-<div class="math-scroll">\[\boxed{\lambda_n=\left(\frac{n\pi}{L}\right)^4,\qquad
+<div class="math-scroll">\[\boxed{\lambda_n=-\left(\frac{n\pi}{L}\right)^4,\qquad
 X_n(x)=\sin\left(\frac{n\pi x}{L}\right).}\]</div>
-<p>No se omiten valores propios: multiplicando \(X^{(4)}=\lambda X\) por \(X\) e integrando dos veces por partes, las cuatro condiciones de frontera dan</p>
-<div class="math-scroll">\[\lambda\int_0^L X^2\,dx=\int_0^L (X'')^2\,dx.\]</div>
-<p>Para una función propia no trivial, \(\lambda&gt;0\); cuando \(\lambda=0\), las condiciones de frontera obligan a \(X\equiv0\).</p>
+<p>No se omiten valores propios: multiplicando \(X^{(4)}=-\lambda X\) por \(X\) e integrando dos veces por partes, las cuatro condiciones de frontera dan</p>
+<div class="math-scroll">\[-\lambda\int_0^L X^2\,dx=\int_0^L (X'')^2\,dx.\]</div>
+<p>Para una función propia no trivial, \(\lambda&lt;0\); cuando \(\lambda=0\), las condiciones de frontera obligan a \(X\equiv0\).</p>
 <h3>3. Ecuación temporal</h3>
-<p>Sustituyendo \(\lambda_n\):</p>
+<p>Sustituyendo \(\lambda_n\) en \(T''-a^2\lambda_n T=0\):</p>
 <div class="math-scroll">\[T_n''+a^2\left(\frac{n\pi}{L}\right)^4T_n=0.\]</div>
 <p>Definimos la frecuencia angular natural</p>
 <div class="math-scroll">\[\omega_n=\frac{an^2\pi^2}{L^2}.\]</div>
