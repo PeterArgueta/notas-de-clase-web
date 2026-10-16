@@ -1,0 +1,81 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Vibración transversal de una viga simplemente apoyada · Notas de clase</title><link rel="stylesheet" href="/recursos_academicos/_astro/Base.C5RtAhwU.css"><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script><style>.math-scroll{max-width:100%;overflow-x:auto;padding:6px 0}.problem details{border:1px solid #d7dde4;border-radius:6px;padding:1rem}.problem summary{cursor:pointer;font-weight:600}.solution{padding-top:1rem}</style></head><body><header class="topbar"><a class="brand" href="/recursos_academicos/">⌂ Notas de clase</a><nav><a href="/recursos_academicos/edp/">EDP</a></nav></header><main class="page"><p><a href="/recursos_academicos/edp/">« Volver al curso EDP</a></p><h1 class="topic-title">Vibración transversal de una viga simplemente apoyada</h1><article class="problem"><div class="problem-meta">EDP-VIGA-SIMPLEMENTE-APOYADA · Avanzada</div><h2>Enunciado</h2><div class="statement"><p>El desplazamiento transversal \(u(x,t)\) de una viga vibratoria de longitud \(L\) satisface</p>
+<div class="math-scroll">\[a^2\frac{\partial^4u}{\partial x^4}+\frac{\partial^2u}{\partial t^2}=0,\qquad 0&lt;x&lt;L,\quad t&gt;0,\]</div>
+<p>donde \(a&gt;0\). La viga está simplemente apoyada en ambos extremos:</p>
+<div class="math-scroll">\[u(0,t)=u(L,t)=0,\qquad
+u_{xx}(0,t)=u_{xx}(L,t)=0.\]</div>
+<p>Las condiciones iniciales son</p>
+<div class="math-scroll">\[u(x,0)=f(x),\qquad u_t(x,0)=g(x),\quad 0&lt;x&lt;L.\]</div>
+<p>Determine \(u(x,t)\) mediante separación de variables, utilizando \(\lambda=\alpha^4\).</p></div><details><summary>Ver solución</summary><section class="solution"><h3>1. Separación de variables</h3>
+<p>Proponemos \(u(x,t)=X(x)T(t)\). Sustituyendo:</p>
+<div class="math-scroll">\[a^2X^{(4)}(x)T(t)+X(x)T''(t)=0.\]</div>
+<p>Dividimos entre \(a^2XT\):</p>
+<div class="math-scroll">\[\frac{X^{(4)}}{X}=-\frac{T''}{a^2T}=\lambda.\]</div>
+<p>Obtenemos dos ecuaciones diferenciales ordinarias:</p>
+<div class="math-scroll">\[X^{(4)}-\lambda X=0,\qquad T''+a^2\lambda T=0.\]</div>
+<p>Las condiciones de frontera se transforman en</p>
+<div class="math-scroll">\[X(0)=X(L)=0,\qquad X''(0)=X''(L)=0.\]</div>
+<h3>2. Valores y funciones propias</h3>
+<p>Usando la sugerencia \(\lambda=\alpha^4\) con \(\alpha&gt;0\), la ecuación espacial es</p>
+<div class="math-scroll">\[X^{(4)}-\alpha^4X=0.\]</div>
+<p>Su ecuación característica se factoriza como</p>
+<div class="math-scroll">\[(r^2-\alpha^2)(r^2+\alpha^2)=0,\]</div>
+<p>con raíces \(r=\pm\alpha,\ \pm i\alpha\). Por tanto,</p>
+<div class="math-scroll">\[X(x)=C_1\cosh(\alpha x)+C_2\sinh(\alpha x)
++C_3\cos(\alpha x)+C_4\sin(\alpha x).\]</div>
+<p>Calculando la segunda derivada,</p>
+<div class="math-scroll">\[X''(x)=\alpha^2\bigl[C_1\cosh(\alpha x)+C_2\sinh(\alpha x)
+-C_3\cos(\alpha x)-C_4\sin(\alpha x)\bigr].\]</div>
+<p>Las condiciones \(X(0)=X''(0)=0\) implican</p>
+<div class="math-scroll">\[C_1+C_3=0,\qquad C_1-C_3=0,\]</div>
+<p>y así \(C_1=C_3=0\). Queda</p>
+<div class="math-scroll">\[X(x)=C_2\sinh(\alpha x)+C_4\sin(\alpha x).\]</div>
+<p>Aplicando \(X(L)=X''(L)=0\):</p>
+<div class="math-scroll">\[C_2\sinh(\alpha L)+C_4\sin(\alpha L)=0,\]</div>
+<div class="math-scroll">\[C_2\sinh(\alpha L)-C_4\sin(\alpha L)=0.\]</div>
+<p>Al sumar ambas ecuaciones, \(2C_2\sinh(\alpha L)=0\). Como \(\alpha,L&gt;0\), se deduce \(C_2=0\). Para una solución no trivial, \(C_4\ne0\), por lo que</p>
+<div class="math-scroll">\[\sin(\alpha L)=0\quad\Longrightarrow\quad
+\alpha_n=\frac{n\pi}{L},\qquad n=1,2,\ldots\]</div>
+<p>Los valores y funciones propias son</p>
+<div class="math-scroll">\[\boxed{\lambda_n=\left(\frac{n\pi}{L}\right)^4,\qquad
+X_n(x)=\sin\left(\frac{n\pi x}{L}\right).}\]</div>
+<p>No se omiten valores propios: multiplicando \(X^{(4)}=\lambda X\) por \(X\) e integrando dos veces por partes, las cuatro condiciones de frontera dan</p>
+<div class="math-scroll">\[\lambda\int_0^L X^2\,dx=\int_0^L (X'')^2\,dx.\]</div>
+<p>Para una función propia no trivial, \(\lambda&gt;0\); cuando \(\lambda=0\), las condiciones de frontera obligan a \(X\equiv0\).</p>
+<h3>3. Ecuación temporal</h3>
+<p>Sustituyendo \(\lambda_n\):</p>
+<div class="math-scroll">\[T_n''+a^2\left(\frac{n\pi}{L}\right)^4T_n=0.\]</div>
+<p>Definimos la frecuencia angular natural</p>
+<div class="math-scroll">\[\omega_n=\frac{an^2\pi^2}{L^2}.\]</div>
+<p>Por tanto,</p>
+<div class="math-scroll">\[T_n(t)=A_n\cos(\omega_nt)+B_n\sin(\omega_nt).\]</div>
+<h3>4. Principio de superposición</h3>
+<p>Las soluciones modales son</p>
+<div class="math-scroll">\[u_n(x,t)=\bigl[A_n\cos(\omega_nt)+B_n\sin(\omega_nt)\bigr]
+\sin\left(\frac{n\pi x}{L}\right).\]</div>
+<p>Por superposición,</p>
+<div class="math-scroll">\[\boxed{u(x,t)=\sum_{n=1}^{\infty}
+\left[A_n\cos\left(\frac{an^2\pi^2}{L^2}t\right)
++B_n\sin\left(\frac{an^2\pi^2}{L^2}t\right)\right]
+\sin\left(\frac{n\pi x}{L}\right).}\]</div>
+<h3>5. Condiciones iniciales</h3>
+<p>En \(t=0\):</p>
+<div class="math-scroll">\[f(x)=\sum_{n=1}^{\infty}A_n\sin\left(\frac{n\pi x}{L}\right).\]</div>
+<p>Por ortogonalidad de los senos en \((0,L)\):</p>
+<div class="math-scroll">\[\boxed{A_n=\frac{2}{L}\int_0^L f(x)\sin\left(\frac{n\pi x}{L}\right)\,dx.}\]</div>
+<p>Derivando la serie respecto del tiempo y evaluando en \(t=0\):</p>
+<div class="math-scroll">\[g(x)=\sum_{n=1}^{\infty}\omega_n B_n\sin\left(\frac{n\pi x}{L}\right).\]</div>
+<p>Por tanto,</p>
+<div class="math-scroll">\[\boxed{B_n=\frac{2L}{an^2\pi^2}
+\int_0^L g(x)\sin\left(\frac{n\pi x}{L}\right)\,dx.}\]</div>
+<h3>6. Solución final</h3>
+<div class="math-scroll">\[\boxed{
+u(x,t)=\sum_{n=1}^{\infty}
+\left[
+A_n\cos\left(\frac{an^2\pi^2}{L^2}t\right)+
+B_n\sin\left(\frac{an^2\pi^2}{L^2}t\right)
+\right]\sin\left(\frac{n\pi x}{L}\right),
+}\]</div>
+<p>con \(A_n\) y \(B_n\) definidos por las integrales anteriores.</p><h2>Comprobación</h2><p>Cada función \(\sin(n\pi x/L)\) y su segunda derivada se anulan en \(x=0\) y \(x=L\). Además, para cada modo,</p>
+<div class="math-scroll">\[a^2u_{n,xxxx}+u_{n,tt}
+=\left[a^2\left(\frac{n\pi}{L}\right)^4-\omega_n^2\right]u_n=0.\]</div>
+<p>Las series de Fourier reproducen \(u(x,0)=f(x)\) y \(u_t(x,0)=g(x)\) bajo las condiciones habituales de convergencia y regularidad. Las frecuencias cumplen \(\omega_n=n^2\omega_1\): a diferencia de una cuerda ideal, los modos superiores de la viga tienen frecuencias proporcionales a \(n^2\).</p></section></details></article></main><footer class="footer">© 2026 Peter Argueta · Notas de clase</footer><script>const d=document.querySelector('details');d.addEventListener('toggle',()=>d.querySelector('summary').textContent=d.open?'Ocultar solución':'Ver solución')</script></body></html>
