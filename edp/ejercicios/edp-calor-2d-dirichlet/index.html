@@ -1,0 +1,50 @@
+<!DOCTYPE html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="stylesheet" href="/recursos_academicos/_astro/Base.C5RtAhwU.css"><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre']}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script><title>Ecuación de calor bidimensional: fronteras de Dirichlet · Notas de clase</title></head><body><header class="topbar"><a class="brand" href="/recursos_academicos/">⌂ Notas de clase</a><nav><a href="/recursos_academicos/edp/">EDP</a> · <a href="/recursos_academicos/edp/temas/ecuacion-de-calor/ejercicios/">Ecuación de calor</a></nav></header><main class="page"><p><a href="/recursos_academicos/edp/temas/ecuacion-de-calor/ejercicios/">« Volver a ejercicios</a></p><h1 class="topic-title">Ecuación de calor bidimensional: fronteras de Dirichlet</h1><article class="problem"><div class="problem-meta"><span>EDP-CALOR-2D-DIRICHLET</span><span>Intermedia</span></div><h2>Enunciado</h2><div class="statement"><p>Resuelva la ecuación de calor en la placa cuadrada \(0&lt;x&lt;\pi\), \(0&lt;y&lt;\pi\), \(t&gt;0\):</p>
+<div class="math-scroll">\[\frac{\partial u}{\partial t}=k\left(\frac{\partial^2u}{\partial x^2}+\frac{\partial^2u}{\partial y^2}\right),\qquad k&gt;0,\]</div>
+<p>sujeta a las condiciones de frontera</p>
+<div class="math-scroll">\[u(0,y,t)=u(\pi,y,t)=0,
+\qquad u(x,0,t)=u(x,\pi,t)=0,\]</div>
+<p>y a la condición inicial</p>
+<div class="math-scroll">\[u(x,y,0)=u_0.\]</div></div><details data-solution><summary>Ver solución</summary><div class="solution"><h4>1. Separación de variables</h4>
+<p>Proponemos \(u(x,y,t)=X(x)Y(y)T(t)\). Al sustituir y dividir entre \(kXYT\):</p>
+<div class="math-scroll">\[\frac{T'}{kT}=\frac{X''}{X}+\frac{Y''}{Y}=-(\lambda+\mu).\]</div>
+<p>Se obtienen las tres ecuaciones:</p>
+<div class="math-scroll">\[X''+\lambda X=0,\quad Y''+\mu Y=0,\quad T'+k(\lambda+\mu)T=0.\]</div>
+<h4>2. Valores y funciones propias</h4>
+<p>De \(X(0)=X(\pi)=0\) se deduce, para soluciones no triviales,</p>
+<div class="math-scroll">\[\lambda_m=m^2,\qquad X_m(x)=\sin(mx),\qquad m=1,2,\ldots\]</div>
+<p>Análogamente, de \(Y(0)=Y(\pi)=0\):</p>
+<div class="math-scroll">\[\mu_n=n^2,\qquad Y_n(y)=\sin(ny),\qquad n=1,2,\ldots\]</div>
+<p>Los casos de valor propio cero o negativo producen únicamente la solución trivial bajo estas condiciones homogéneas de Dirichlet.</p>
+<h4>3. Factor temporal y superposición</h4>
+<p>Sustituyendo los valores propios en la ecuación temporal:</p>
+<div class="math-scroll">\[T'_{mn}+k(m^2+n^2)T_{mn}=0
+\quad\Longrightarrow\quad
+T_{mn}(t)=e^{-k(m^2+n^2)t},\]</div>
+<p>donde incorporamos la constante de integración a \(A_{mn}\).</p>
+<p>Por el principio de superposición:</p>
+<div class="math-scroll">\[\boxed{u(x,y,t)=\sum_{m=1}^{\infty}\sum_{n=1}^{\infty}
+A_{mn}e^{-k(m^2+n^2)t}\sin(mx)\sin(ny).}\]</div>
+<h4>4. Condición inicial: serie doble de Fourier</h4>
+<p>En \(t=0\):</p>
+<div class="math-scroll">\[u_0=\sum_{m=1}^{\infty}\sum_{n=1}^{\infty}
+A_{mn}\sin(mx)\sin(ny).\]</div>
+<p>Por ortogonalidad de los senos:</p>
+<div class="math-scroll">\[A_{mn}=\frac{4}{\pi^2}\int_0^\pi\int_0^\pi
+u_0\sin(mx)\sin(ny)\,dx\,dy.\]</div>
+<p>Separando las integrales y usando</p>
+<p>\(\displaystyle\int_0^\pi\sin(mx)\,dx=\frac{1-(-1)^m}{m}\):</p>
+<div class="math-scroll">\[\boxed{A_{mn}=\frac{4u_0}{\pi^2mn}[1-(-1)^m][1-(-1)^n].}\]</div>
+<p>Los coeficientes se anulan si alguno de los índices es par. Si ambos son impares:</p>
+<div class="math-scroll">\[A_{mn}=\frac{16u_0}{\pi^2mn}.\]</div>
+<h4>5. Solución final</h4>
+<div class="math-scroll">\[\boxed{
+u(x,y,t)=\frac{16u_0}{\pi^2}
+\sum_{\substack{m=1\\m\ \mathrm{impar}}}^{\infty}
+\sum_{\substack{n=1\\n\ \mathrm{impar}}}^{\infty}
+\frac{e^{-k(m^2+n^2)t}}{mn}\sin(mx)\sin(ny).
+}\]</div><h3>Comprobación</h3><p>Para cada sumando, \(u_t=-k(m^2+n^2)u\) y</p>
+<p>\(k(u_{xx}+u_{yy})=-k(m^2+n^2)u\); por tanto, satisface la ecuación.</p>
+<p>Los factores \(\sin(mx)\) y \(\sin(ny)\) se anulan en los cuatro bordes.</p>
+<p>Los coeficientes recuperan el dato inicial en el interior en el sentido de Fourier.</p>
+<p>Si \(u_0\ne0\), el dato inicial no es compatible con los valores cero en las esquinas y bordes en \(t=0\); la solución es válida para \(t&gt;0\).</p>
+<p>Además, \(\lim_{t\to\infty}u(x,y,t)=0\).</p></div></details></article></main><footer class="footer">© 2026 Peter Argueta · Notas de clase</footer><style>.math-scroll{overflow-x:auto;max-width:100%;padding:.35rem 0}details[data-solution]{margin-top:1.5rem;padding:1rem;border:1px solid #d7dde4;border-radius:.4rem}summary{cursor:pointer;font-weight:600}.solution{padding-top:1rem}.solution p{overflow-wrap:anywhere}</style><script>document.querySelector('[data-solution]')?.addEventListener('toggle',e=>e.target.querySelector('summary').textContent=e.target.open?'Ocultar solución':'Ver solución')</script></body></html>
